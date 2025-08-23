@@ -1,0 +1,4 @@
+Flask==3.0.3
+psycopg2-binary==2.9.9   # for PostgreSQL (remove if using MySQL)
+mysql-connector-python==9.0.0   # for MySQL (remove if using PostgreSQL)
+python-dotenv==1.0.1     # optional (for storing DB credentials in .env file)
