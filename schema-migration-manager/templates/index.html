@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Schema Migration Manager</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Schema Migration Manager</h1>
+
+    <h2>Applied Migrations</h2>
+    <ul class="applied">
+      {% if applied %} {% for version in applied %}
+      <li>{{ version }}</li>
+      {% endfor %} {% else %}
+      <li>No migrations applied.</li>
+      {% endif %}
+    </ul>
+
+    <h2>Pending Migrations</h2>
+    <ul class="pending">
+      {% if pending %} {% for version in pending %}
+      <li>{{ version }}</li>
+      {% endfor %} {% else %}
+      <li>No pending migrations.</li>
+      {% endif %}
+    </ul>
+  </body>
+</html>

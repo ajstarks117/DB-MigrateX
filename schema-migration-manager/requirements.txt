@@ -1,4 +1,4 @@
 Flask==3.0.3
-psycopg2-binary==2.9.9   # for PostgreSQL (remove if using MySQL)
-mysql-connector-python==9.0.0   # for MySQL (remove if using PostgreSQL)
+psycopg2-binary==2.9.10   # for PostgreSQL (remove if using MySQL)
 python-dotenv==1.0.1     # optional (for storing DB credentials in .env file)
+click==8.1.7
