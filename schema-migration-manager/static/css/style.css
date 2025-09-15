@@ -1,0 +1,54 @@
+/* General layout */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 40px;
+    background: linear-gradient(135deg, #f9fafb, #eef1f6);
+    color: #333;
+}
+
+/* Headings */
+h1 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 30px;
+    border-left: 5px solid #3498db;
+    padding-left: 10px;
+}
+
+/* Migration lists */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+/* List items styled like cards */
+li {
+    background: #fff;
+    margin: 8px 0;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover effect for better interactivity */
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Differentiate applied vs pending */
+.applied li {
+    border-left: 6px solid #2ecc71; /* green */
+}
+
+.pending li {
+    border-left: 6px solid #e67e22; /* orange */
+}
