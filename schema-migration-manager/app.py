@@ -4,14 +4,22 @@ from migrmgr.parser import MigrationParser
 from migrmgr.planner import MigrationPlanner
 from migrmgr.cli import db_config
 import logging
+import os
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.ERROR)
 
+# Update the path to the correct relative location
+MIGRATIONS_DIR = "migrations"
+
 @app.route('/')
 def index():
+    if not os.path.exists(MIGRATIONS_DIR):
+        logging.error(f"Directory '{MIGRATIONS_DIR}' does not exist.")
+        return "Error: Migrations directory not found.", 500
+
     state = DatabaseState(db_config)
-    parser = MigrationParser("migrations")
+    parser = MigrationParser(MIGRATIONS_DIR)
     planner = MigrationPlanner(state.get_applied_migrations(), parser.get_migration_files())
 
     applied = state.get_applied_migrations()
