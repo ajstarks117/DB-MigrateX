@@ -1,0 +1,11 @@
+id: 001
+filename: 001_create_users.sql
+author: "Alice"
+description: "Create users table"
+requires:
+  - 000_init
+down_filename: 001_create_users_down.sql
+type: ddl
+metadata:
+  risk: low
+  ticket: MIG-123
