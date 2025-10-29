@@ -113,3 +113,34 @@ class SqliteAdapter(DatabaseAdapter):
             self._lock_acquired = False
         except Exception:
             pass
+
+    # Helper methods for migration tracking
+    def has_applied(self, migration_id: str) -> bool:
+        row = self.fetchone("SELECT 1 FROM schema_versions WHERE migration_id = ?", (migration_id,))
+        return row is not None
+
+    def get_applied(self, migration_id: str):
+        row = self.fetchone("SELECT * FROM schema_versions WHERE migration_id = ?", (migration_id,))
+        if row is None:
+            return None
+        try:
+            return dict(row)
+        except Exception:
+            # fallback for tuple rows
+            cols = [c[0] for c in self.conn.execute('PRAGMA table_info(schema_versions)')]
+            return {cols[i]: row[i] for i in range(len(row))}
+
+    def record_applied(self, **fields):
+        """Insert a record into schema_versions.
+
+        Expected keys: id, filename, checksum, applied_by, down_filename
+        """
+        self.execute("""
+            INSERT INTO schema_versions (migration_id, filename, checksum, applied_by, down_filename)
+            VALUES (?, ?, ?, ?, ?)
+        """, (fields.get('id'), fields.get('filename'), fields.get('checksum'), fields.get('applied_by'), fields.get('down_filename')))
+        self.commit()
+
+    def remove_record(self, migration_id: str):
+        self.execute("DELETE FROM schema_versions WHERE migration_id = ?", (migration_id,))
+        self.commit()

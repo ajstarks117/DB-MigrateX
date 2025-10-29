@@ -54,20 +54,29 @@ class DatabaseState:
     def _ensure_schema_versions_table(self):
         """Ensure the schema_versions table exists."""
         try:
+            # Use the enhanced schema_versions table with metadata fields
             if self._mode == 'postgres':
                 self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS schema_versions (
-                    version VARCHAR(50) PRIMARY KEY,
+                    migration_id VARCHAR(100) PRIMARY KEY,
+                    filename TEXT NOT NULL,
+                    checksum TEXT NOT NULL,
+                    applied_by TEXT,
                     applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    description TEXT
+                    down_filename TEXT,
+                    notes TEXT
                 );
                 """)
             else:
-               self.cursor.execute("""
+                self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS schema_versions (
-                    version TEXT PRIMARY KEY,
+                    migration_id TEXT PRIMARY KEY,
+                    filename TEXT NOT NULL,
+                    checksum TEXT NOT NULL,
+                    applied_by TEXT,
                     applied_at TEXT DEFAULT (datetime('now')),
-                    description TEXT
+                    down_filename TEXT,
+                    notes TEXT
                 );
                 """)
 
@@ -83,8 +92,28 @@ class DatabaseState:
     def get_applied_migrations(self) -> List[str]:
         """Fetch all applied migration versions from schema_versions table."""
         try:
-            self.cursor.execute("SELECT version FROM schema_versions ORDER BY version")
-            return [row[0] for row in self.cursor.fetchall()]
+            # be tolerant of older schema_versions tables that used 'version'
+            if self._mode == 'postgres':
+                # check columns in Postgres
+                self.cursor.execute("SELECT column_name FROM information_schema.columns WHERE table_name='schema_versions'")
+                cols = [r[0] for r in self.cursor.fetchall()]
+                if 'migration_id' in cols:
+                    self.cursor.execute("SELECT migration_id FROM schema_versions ORDER BY applied_at")
+                    return [row[0] for row in self.cursor.fetchall()]
+                if 'version' in cols:
+                    self.cursor.execute("SELECT version FROM schema_versions ORDER BY version")
+                    return [row[0] for row in self.cursor.fetchall()]
+                return []
+            else:
+                self.cursor.execute("PRAGMA table_info(schema_versions)")
+                cols = [r[1] for r in self.cursor.fetchall()]
+                if 'migration_id' in cols:
+                    self.cursor.execute("SELECT migration_id FROM schema_versions ORDER BY applied_at")
+                    return [row[0] for row in self.cursor.fetchall()]
+                if 'version' in cols:
+                    self.cursor.execute("SELECT version FROM schema_versions ORDER BY version")
+                    return [row[0] for row in self.cursor.fetchall()]
+                return []
         except Exception as e:
             try:
                 self.conn.rollback()

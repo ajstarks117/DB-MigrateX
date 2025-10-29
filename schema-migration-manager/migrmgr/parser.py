@@ -112,6 +112,11 @@ def parse_migration(sql_path: str) -> Migration:
             deduped_requires.append(r)
 
     down_filename = merged.get('down_filename')
+    # Auto-detect companion _down.sql file if not provided in metadata
+    if not down_filename:
+        down_path = sql_path.with_name(sql_path.stem + "_down.sql")
+        if down_path.exists():
+            down_filename = down_path.name
     mtype = merged.get('type')
     chksum = checksum(str(sql_path))
 
@@ -259,6 +264,11 @@ def parse_migration(sql_path: str) -> Migration:
             deduped_requires.append(r)
 
     down_filename = merged.get('down_filename')
+    # Auto-detect companion _down.sql file when present
+    if not down_filename:
+        down_path = sql_path.with_name(sql_path.stem + "_down.sql")
+        if down_path.exists():
+            down_filename = down_path.name
     mtype = merged.get('type')
 
     chksum = checksum(str(sql_path))
@@ -414,7 +424,16 @@ def parse_migration(sql_path: str) -> Migration:
     merged.update(inline_meta or {})
     merged.update(file_meta or {})
 
-    base_id = merged.get('id') or sql_path.stem.split('_', 1)[0]
+    raw_id = merged.get('id')
+    stem_prefix = sql_path.stem.split('_', 1)[0]
+    if raw_id is None:
+        base_id = stem_prefix
+    else:
+        # preserve leading zeros if YAML parsed numeric values (e.g. 001 -> int 1)
+        if isinstance(raw_id, int):
+            base_id = str(raw_id).zfill(len(stem_prefix))
+        else:
+            base_id = str(raw_id)
     filename = merged.get('filename') or sql_path.name
     author = merged.get('author')
     description = merged.get('description')
@@ -469,3 +488,22 @@ class MigrationParser:
                 sql_content = f.read()
                 migrations.append((file.split('.')[0], sql_content))
         return migrations
+
+
+# Override/ensure a robust parse_migrations that auto-detects _down.sql companions
+from pathlib import Path as _Path
+def parse_migrations(dir_path: str) -> List[Migration]:
+    p = _Path(dir_path)
+    if not p.exists():
+        return []
+    migrations = []
+    for sql in sorted(p.glob('*.sql')):
+        if sql.name.endswith('_down.sql') or sql.name.endswith('.down.sql'):
+            continue
+        m = parse_migration(str(sql))
+        if not getattr(m, 'down_filename', None):
+            down = sql.with_name(sql.stem + "_down.sql")
+            if down.exists():
+                m.down_filename = down.name
+        migrations.append(m)
+    return migrations

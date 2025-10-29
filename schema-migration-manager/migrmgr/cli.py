@@ -25,13 +25,20 @@ def cli():
 @cli.command()
 @click.option('--migrations-dir', default='migrations', help='Directory with migration files')
 @click.option('--dry-run', is_flag=True, help='Show planned migrations without applying')
-def migrate(migrations_dir, dry_run):
-    """Apply all pending migrations or show plan with --dry-run."""
-  
+@click.option('--skip-integrity', is_flag=True, help='Skip pre/post integrity checks')
+@click.option('--force', is_flag=True, help='Force apply even if down file is missing')
+@click.option('--rollback-to', help='Rollback applied migrations down to given migration id')
+def migrate(migrations_dir, dry_run, skip_integrity, force, rollback_to):
+    """Apply all pending migrations or show plan; supports rollback-to target."""
+
     migrations = migration_parser.parse_migrations(migrations_dir)
 
     state = DatabaseState(db_config)
-    applied = state.get_applied_migrations()
+    # For dry-run we don't consult the DB state (show what would be applied from scratch)
+    if dry_run:
+        applied = []
+    else:
+        applied = state.get_applied_migrations()
 
     planner = MigrationPlanner(applied)
     plan = planner.build_plan(migrations)
@@ -45,15 +52,23 @@ def migrate(migrations_dir, dry_run):
         state.close()
         return
 
-    if not plan:
-        click.echo('No pending migrations.')
-        state.close()
-        return
-
     executor = MigrationExecutor(db_config)
     try:
+        if rollback_to:
+            executor.rollback_to(rollback_to)
+            return
+
+        if not plan:
+            click.echo('No pending migrations.')
+            state.close()
+            return
+
+        # who is applying
+        import getpass
+        user = getpass.getuser()
+
         for m in plan:
-            executor.apply_migration(m.id, m.up_sql, m.description or '')
+            executor.apply_migration(m, user=user, force=force, skip_integrity=skip_integrity)
     finally:
         executor.close()
         state.close()
