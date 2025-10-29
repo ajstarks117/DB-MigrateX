@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from migrmgr.state import DatabaseState
-from migrmgr.parser import MigrationParser
+from migrmgr.parser import parse_migrations
 from migrmgr.planner import MigrationPlanner
 from migrmgr.cli import db_config
 import logging
@@ -20,11 +20,13 @@ def index():
         return "Error: Migrations directory not found.", 500
 
     state = DatabaseState(db_config)
-    parser = MigrationParser(MIGRATIONS_DIR)
-    planner = MigrationPlanner(state.get_applied_migrations(), parser.get_migration_files())
+    # Use the parser helper to obtain Migration objects and then build a plan
+    migrations = parse_migrations(MIGRATIONS_DIR)
+    planner = MigrationPlanner(state.get_applied_migrations())
+    pending_plan = planner.build_plan(migrations)
 
     applied = state.get_applied_migrations()
-    pending = [version for version, _ in planner.get_pending_migrations()]
+    pending = [m.id for m in pending_plan]
 
     state.close()
     return render_template('index.html', applied=applied, pending=pending)

@@ -1,10 +1,10 @@
 import click
-from .state import DatabaseState
-from .parser import MigrationParser
+import os
+from dotenv import load_dotenv
+from . import parser as migration_parser
 from .planner import MigrationPlanner
 from .executor import MigrationExecutor
-from dotenv import load_dotenv
-import os
+from .state import DatabaseState
 
 load_dotenv()
 
@@ -16,28 +16,48 @@ db_config = {
     'port': os.getenv('DB_PORT')
 }
 
+
 @click.group()
 def cli():
     pass
 
-@cli.command()
-def migrate():
-    """Apply all pending migrations."""
-    state = DatabaseState(db_config)
-    parser = MigrationParser("migrations")
-    planner = MigrationPlanner(state.get_applied_migrations(), parser.get_migration_files())
-    executor = MigrationExecutor(db_config)
 
-    pending = planner.get_pending_migrations()
-    if not pending:
-        print("No pending migrations.")
+@cli.command()
+@click.option('--migrations-dir', default='migrations', help='Directory with migration files')
+@click.option('--dry-run', is_flag=True, help='Show planned migrations without applying')
+def migrate(migrations_dir, dry_run):
+    """Apply all pending migrations or show plan with --dry-run."""
+  
+    migrations = migration_parser.parse_migrations(migrations_dir)
+
+    state = DatabaseState(db_config)
+    applied = state.get_applied_migrations()
+
+    planner = MigrationPlanner(applied)
+    plan = planner.build_plan(migrations)
+
+    if dry_run:
+        click.echo('Planned migrations:')
+        for m in plan:
+            click.echo(f"- {m.id} {m.filename} (checksum={m.checksum})")
+        click.echo('\nDependency graph:')
+        click.echo(planner.build_graph_text(migrations))
+        state.close()
         return
 
-    for version, sql in pending:
-        executor.apply_migration(version, sql)
-    
-    state.close()
-    executor.close()
+    if not plan:
+        click.echo('No pending migrations.')
+        state.close()
+        return
 
-if __name__ == "__main__":
+    executor = MigrationExecutor(db_config)
+    try:
+        for m in plan:
+            executor.apply_migration(m.id, m.up_sql, m.description or '')
+    finally:
+        executor.close()
+        state.close()
+
+
+if __name__ == '__main__':
     cli()
