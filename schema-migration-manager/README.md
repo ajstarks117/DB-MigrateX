@@ -51,7 +51,7 @@ Notes:
   ```powershell
   .\venv\Scripts\python.exe -m pip install PyYAML-6.0-cp311-cp311-win_amd64.whl
   ```
-- Alternatively use Docker or WSL / install Visual Studio Build Tools.
+- Alternatively use WSL or install Visual Studio Build Tools.
 
 ---
 
@@ -108,6 +108,38 @@ $env:DB_PASSWORD='your_pass'
 $env:DB_HOST='localhost'
 $env:DB_PORT='5432'
 python -m migrmgr.cli migrate
+```
+
+MySQL (example):
+If you want to run migrations against a MySQL server (local or remote), set the engine to `mysql` and provide equivalent credentials. The project supports MySQL via `mysql-connector-python`.
+
+Create a `.env` in repo root:
+```
+DB_ENGINE=mysql
+DB_NAME=your_db
+DB_USER=your_user
+DB_PASSWORD=your_pass
+DB_HOST=localhost
+DB_PORT=3306
+```
+
+PowerShell example (one-off):
+```powershell
+$env:DB_ENGINE='mysql'
+$env:DB_NAME='your_db'
+$env:DB_USER='your_user'
+$env:DB_PASSWORD='your_pass'
+$env:DB_HOST='localhost'
+$env:DB_PORT='3306'
+python -m migrmgr.cli migrate
+```
+
+Quick local MySQL for testing a dummy DB:
+Use your local MySQL server (installed via MySQL Installer, XAMPP, or other package). Create a test database (example `testdb`) and set credentials in `.env` or via environment variables as shown above.
+
+Note: install the MySQL driver before using MySQL backend:
+```powershell
+pip install mysql-connector-python
 ```
 
 ---

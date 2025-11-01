@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 logging.basicConfig(level=logging.ERROR)
 
-# Set the migrations directory relative to this file's location
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MIGRATIONS_DIR = os.path.join(BASE_DIR, "migrations")
 
@@ -20,7 +20,7 @@ def index():
         return "Error: Migrations directory not found.", 500
 
     state = DatabaseState(db_config)
-    # Use the parser helper to obtain Migration objects and then build a plan
+    
     migrations = parse_migrations(MIGRATIONS_DIR)
     planner = MigrationPlanner(state.get_applied_migrations())
     pending_plan = planner.build_plan(migrations)

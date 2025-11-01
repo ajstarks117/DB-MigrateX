@@ -1,10 +1,17 @@
 """Executor implementing apply/rollback with checksum, idempotency, and integrity checks."""
 from pathlib import Path
 import logging
+import os
 from typing import Optional
 
 from .db import SqliteAdapter
 from .integrity import run_pre_checks, run_post_checks
+
+try:
+    from .db import MySQLAdapter
+    HAS_MYSQL_ADAPTER = True
+except Exception:
+    HAS_MYSQL_ADAPTER = False
 
 
 class MigrationError(Exception):
@@ -13,8 +20,23 @@ class MigrationError(Exception):
 
 class MigrationExecutor:
     def __init__(self, db_path: Optional[str] = None):
-        db_path = db_path or (Path.cwd() / 'dev.sqlite3')
-        self.adapter = SqliteAdapter(str(db_path))
+        """db_path may be:
+        - a string path for sqlite DB file (backwards compatible)
+        - a dict-like DB config (as passed from cli.py) to select a remote backend (MySQL/Postgres)
+        For minimal change we detect dict and prefer MySQLAdapter when DB_ENGINE=mysql.
+        """
+        # Backwards compatible behavior: tests pass a path string via db_path kwarg
+        if isinstance(db_path, dict):
+            db_conf = db_path
+            # prefer MySQL when explicitly requested via env var
+            if os.getenv('DB_ENGINE', '').lower() == 'mysql' and HAS_MYSQL_ADAPTER:
+                self.adapter = MySQLAdapter(db_conf)
+            else:
+                # fallback to sqlite file in project root
+                self.adapter = SqliteAdapter(str(Path.cwd() / 'dev.sqlite3'))
+        else:
+            db_path = db_path or (Path.cwd() / 'dev.sqlite3')
+            self.adapter = SqliteAdapter(str(db_path))
         # ensure connection
         self.adapter.connect()
         # ensure schema_versions exists (state._ensure_schema_versions_table should also have run)

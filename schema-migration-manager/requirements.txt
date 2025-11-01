@@ -8,3 +8,4 @@ pytest==7.4.0
 # build from source and fails, install a wheel matching your Python version
 # or use a Python version with prebuilt wheels (e.g., 3.11), or install
 # build tools (Visual Studio Build Tools) so the package can compile.
+mysql-connector-python==8.0.33  # optional: required to use MySQL backend
