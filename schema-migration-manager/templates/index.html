@@ -2,30 +2,50 @@
 <html>
   <head>
     <title>Schema Migration Manager</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </head>
+
   <body>
-    <h1>Schema Migration Manager</h1>
+    <h1>🚀 Schema Migration Manager</h1>
 
-    <h2>Applied Migrations</h2>
-    <ul class="applied">
-      {% if applied %} {% for version in applied %}
-      <li>{{ version }}</li>
-      {% endfor %} {% else %}
-      <li>No migrations applied.</li>
-      {% endif %}
-    </ul>
+    <!-- Applied Migrations -->
+    <div class="section">
+      <h2>✅ Applied Migrations</h2>
+      <ul class="applied">
+        {% if applied %}
+          {% for version in applied %}
+          <li>{{ version }}</li>
+          {% endfor %}
+        {% else %}
+          <li>No migrations applied yet.</li>
+        {% endif %}
+      </ul>
+    </div>
 
-    <h2>Pending Migrations</h2>
-    <ul class="pending">
-      {% if pending %} {% for version in pending %}
-      <li>{{ version }}</li>
-      {% endfor %} {% else %}
-      <li>No pending migrations.</li>
-      {% endif %}
-    </ul>
+    <!-- Pending Migrations -->
+    <div class="section">
+      <h2>⏳ Pending Migrations</h2>
+      <ul class="pending">
+        {% if pending %}
+          {% for version in pending %}
+          <li>{{ version }}</li>
+          {% endfor %}
+        {% else %}
+          <li>No pending migrations.</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-box">
+      <button onclick="applyMigrations()" class="btn btn-apply">
+        Apply Pending Migrations
+      </button>
+
+      <a href="/">
+        <button class="btn btn-refresh">Refresh Status</button>
+      </a>
+    </div>
   </body>
 </html>

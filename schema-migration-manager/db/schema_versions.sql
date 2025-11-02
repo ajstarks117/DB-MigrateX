@@ -1,9 +1,6 @@
-CREATE TABLE IF NOT EXISTS schema_versions (
-    migration_id TEXT PRIMARY KEY,
-    filename TEXT NOT NULL,
-    checksum TEXT NOT NULL,
-    applied_by TEXT,
-    applied_at TEXT DEFAULT (datetime('now')),
-    down_filename TEXT,
-    notes TEXT
+CREATE TABLE schema_versions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    version VARCHAR(50) UNIQUE,
+    description TEXT,
+    applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
