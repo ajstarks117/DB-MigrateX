@@ -50,8 +50,10 @@ li {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
+/* Apply Button */
 .btn-apply {
   background-color: #2ecc71;
   color: white;
@@ -61,6 +63,7 @@ li {
   background-color: #27ae60;
 }
 
+/* Refresh Button */
 .btn-refresh {
   background-color: #3498db;
   color: white;
@@ -68,4 +71,14 @@ li {
 
 .btn-refresh:hover {
   background-color: #2980b9;
+}
+
+/* ✅ RESET BUTTON (NEW) */
+.btn-reset {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-reset:hover {
+  background-color: #c0392b;
 }

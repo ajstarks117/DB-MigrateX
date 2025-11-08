@@ -87,5 +87,37 @@ def apply_migrations():
     return "<br>".join(output)
 
 
+@app.route("/reset")
+def reset_db():
+    import mysql.connector
+    from mysql.connector import errorcode
+
+    dbname = db_config.get("dbname")
+    user = db_config.get("user")
+    password = db_config.get("password")
+    host = db_config.get("host")
+    port = db_config.get("port")
+
+    try:
+        # Connect without database first
+        conn = mysql.connector.connect(
+            user=user, password=password, host=host, port=port
+        )
+        cursor = conn.cursor()
+
+        # Drop DB
+        cursor.execute(f"DROP DATABASE IF EXISTS {dbname}")
+        cursor.execute(f"CREATE DATABASE {dbname}")
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return "✅ Database has been reset successfully!<br>Go back and refresh the homepage."
+
+    except Exception as e:
+        return f"❌ ERROR resetting DB: {e}"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
