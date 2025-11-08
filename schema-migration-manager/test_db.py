@@ -10,7 +10,7 @@ DB_TYPE = "mysql"
 DB_HOST = "localhost"
 DB_PORT = "3306"
 DB_USER = "root"
-DB_PASSWORD = "Rishi@0211"
+DB_PASSWORD = "Ajaya@5621"
 DB_NAME = "dbmigratex"
 
 print("🔍 Attempting MySQL connection...")

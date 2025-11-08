@@ -104,11 +104,11 @@ class MigrationExecutor:
 
         # ✅ record applied
         self.adapter.record_applied(
-            id=mid,
-            filename=migration.filename,
-            checksum=migration.checksum,
+            migration_id=mid,
+            filename=getattr(migration, 'filename', getattr(migration, 'up_file', 'UNKNOWN')),
+            checksum=getattr(migration, 'checksum', ''),
             applied_by=user,
-            down_filename=migration.down_filename,
+            down_filename=getattr(migration, 'down_filename', getattr(migration, 'down_file', None)),
         )
 
         logging.info("Migration %s applied successfully", mid)

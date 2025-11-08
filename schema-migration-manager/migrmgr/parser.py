@@ -71,7 +71,12 @@ def parse_migration(sql_path: str) -> Migration:
 
     file_meta = {}
     if yml_path.exists():
-        file_meta = yaml.safe_load(yml_path.read_text()) or {}
+        try:
+            file_meta = yaml.safe_load(yml_path.read_text()) or {}
+        except Exception as e:
+            # convert YAML parse errors into MigrationParseError for callers/tests
+            raise MigrationParseError(f"Invalid migration YAML {yml_path}: {e}")
+
         if not isinstance(file_meta, dict):
             raise MigrationParseError(f"Migration YAML must be mapping: {yml_path}")
 

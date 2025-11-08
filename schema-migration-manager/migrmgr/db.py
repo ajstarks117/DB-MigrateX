@@ -75,6 +75,85 @@ class SqliteAdapter(DatabaseAdapter):
     def executescript(self, sql_script: str):
         return self.conn.executescript(sql_script)
 
+    # -------------------------------
+    # Migration helper methods (sqlite)
+    # -------------------------------
+    def has_applied(self, migration_id: str) -> bool:
+        # be tolerant of older schema that used 'version' column
+        try:
+            cur = self.execute("PRAGMA table_info(schema_versions)")
+            cols = [r[1] for r in cur.fetchall()]
+            try: cur.close()
+            except: pass
+        except Exception:
+            cols = []
+
+        id_col = 'migration_id' if 'migration_id' in cols else ('version' if 'version' in cols else 'migration_id')
+        row = self.fetchone(
+            f"SELECT 1 FROM schema_versions WHERE {id_col} = ?",
+            (migration_id,)
+        )
+        return row is not None
+
+    def get_applied(self, migration_id: str):
+        try:
+            cur = self.execute("PRAGMA table_info(schema_versions)")
+            cols = [r[1] for r in cur.fetchall()]
+            try: cur.close()
+            except: pass
+        except Exception:
+            cols = []
+
+        id_col = 'migration_id' if 'migration_id' in cols else ('version' if 'version' in cols else 'migration_id')
+
+        row = self.fetchone(
+            f"SELECT * FROM schema_versions WHERE {id_col} = ?",
+            (migration_id,)
+        )
+        if row is None:
+            return None
+        # sqlite3.Row -> behave like dict
+        try:
+            return dict(row)
+        except Exception:
+            # fallback tuple
+            return row
+
+    def record_applied(self,
+                       migration_id: str,
+                       filename: str,
+                       checksum: str,
+                       applied_by: Optional[str] = None,
+                       down_filename: Optional[str] = None):
+        """Record an applied migration into schema_versions (SQLite).
+
+        This explicitly inserts the canonical set of columns so NOT NULL
+        constraints are satisfied.
+        """
+        sql = """
+        INSERT INTO schema_versions
+            (migration_id, filename, checksum, applied_by, down_filename)
+        VALUES (?, ?, ?, ?, ?)
+        """
+        self.execute(sql, (migration_id, filename, checksum, applied_by, down_filename))
+        self.commit()
+
+    def remove_record(self, migration_id: str):
+        try:
+            cur = self.execute("PRAGMA table_info(schema_versions)")
+            cols = [r[1] for r in cur.fetchall()]
+            try: cur.close()
+            except: pass
+        except Exception:
+            cols = []
+
+        id_col = 'migration_id' if 'migration_id' in cols else ('version' if 'version' in cols else 'migration_id')
+        self.execute(
+            f"DELETE FROM schema_versions WHERE {id_col} = ?",
+            (migration_id,)
+        )
+        self.commit()
+
     def fetchone(self, sql: str, params: Optional[tuple] = None):
         cur = self.execute(sql, params)
         row = cur.fetchone()
@@ -197,18 +276,27 @@ class MySQLAdapter(DatabaseAdapter):
         )
         return dict(row) if row else None
 
-    def record_applied(self, **fields):
+    def record_applied(self,
+                       migration_id: str,
+                       filename: str,
+                       checksum: str,
+                       applied_by: Optional[str] = None,
+                       down_filename: Optional[str] = None):
+        """Record an applied migration into schema_versions (MySQL).
+
+        Uses %s placeholder style for mysql-connector-python.
+        """
         self.execute(
             """
             INSERT INTO schema_versions (migration_id, filename, checksum, applied_by, down_filename)
             VALUES (%s, %s, %s, %s, %s)
             """,
             (
-                fields.get("id"),
-                fields.get("filename"),
-                fields.get("checksum"),
-                fields.get("applied_by"),
-                fields.get("down_filename")
+                migration_id,
+                filename,
+                checksum,
+                applied_by,
+                down_filename,
             )
         )
         self.commit()

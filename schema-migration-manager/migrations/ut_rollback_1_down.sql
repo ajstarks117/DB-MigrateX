@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS ut_tmp_1;

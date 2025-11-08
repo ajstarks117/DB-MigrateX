@@ -133,11 +133,13 @@ class DatabaseState:
                     # perform an online migration: create a new table, copy data,
                     # drop the old table and rename the new one.
                     self.cursor.execute("BEGIN")
+                    # create a new table variant with nullable metadata so we can
+                    # safely copy older rows that only had 'version' -> migration id
                     self.cursor.execute("""
                     CREATE TABLE IF NOT EXISTS schema_versions_new (
                         migration_id TEXT PRIMARY KEY,
-                        filename TEXT NOT NULL,
-                        checksum TEXT NOT NULL,
+                        filename TEXT,
+                        checksum TEXT,
                         applied_by TEXT,
                         applied_at TEXT DEFAULT (datetime('now')),
                         down_filename TEXT,

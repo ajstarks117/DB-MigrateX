@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from migrmgr.state import DatabaseState
 from migrmgr.parser import parse_migrations
 from migrmgr.planner import MigrationPlanner
@@ -23,7 +23,12 @@ def index():
         return "❌ Migrations directory not found", 500
 
     # load DB state (schema_versions)
-    state = DatabaseState(db_config)
+    # Prefer a local sqlite dev DB when no external DB is configured (helps tests)
+    # In testing use the local sqlite DB to keep tests hermetic
+    if (not app.testing) and db_config and db_config.get('dbname') and os.getenv('DB_ENGINE', '').lower() in ('postgres', 'postgresql', 'mysql'):
+        state = DatabaseState(db_config)
+    else:
+        state = DatabaseState(None)
 
     # ALL migrations from folder
     migrations = parse_migrations(MIGRATIONS_DIR)
@@ -51,8 +56,13 @@ def apply_migrations():
     """Apply all pending migrations"""
 
     # load db state + executor
-    state = DatabaseState(db_config)
-    executor = MigrationExecutor(db_config)  # ✅ using latest working adapter
+    # Prefer local sqlite for the web UI unless explicit external DB is configured
+    if (not app.testing) and db_config and db_config.get('dbname') and os.getenv('DB_ENGINE', '').lower() in ('postgres', 'postgresql', 'mysql'):
+        state = DatabaseState(db_config)
+        executor = MigrationExecutor(db_config)
+    else:
+        state = DatabaseState(None)
+        executor = MigrationExecutor(None)
 
     # load migration files
     migrations = parse_migrations(MIGRATIONS_DIR)
@@ -85,6 +95,56 @@ def apply_migrations():
 
     output.append("<br>✅ All migrations applied successfully!")
     return "<br>".join(output)
+
+
+@app.route("/rollback/<migration_id>", methods=["POST"])
+def rollback_migration(migration_id):
+    """Rollback a single applied migration by id (only allowed when present).
+
+    Returns plain text status. Uses MigrationExecutor.rollback_migration.
+    """
+    if (not app.testing) and db_config and db_config.get('dbname') and os.getenv('DB_ENGINE', '').lower() in ('postgres', 'postgresql', 'mysql'):
+        state = DatabaseState(db_config)
+        executor = MigrationExecutor(db_config)
+    else:
+        state = DatabaseState(None)
+        executor = MigrationExecutor(None)
+
+    try:
+        executor.rollback_migration(str(migration_id))
+    except Exception as e:
+        executor.close()
+        state.close()
+        return f"❌ {e}", 400
+
+    executor.close()
+    state.close()
+    return f"✅ Rolled back {migration_id}"
+
+
+@app.route("/rollback_to/<target_id>", methods=["POST"])
+def rollback_to(target_id):
+    """Rollback all migrations until reaching target_id (target remains applied).
+
+    Uses MigrationExecutor.rollback_to.
+    """
+    if (not app.testing) and db_config and db_config.get('dbname') and os.getenv('DB_ENGINE', '').lower() in ('postgres', 'postgresql', 'mysql'):
+        state = DatabaseState(db_config)
+        executor = MigrationExecutor(db_config)
+    else:
+        state = DatabaseState(None)
+        executor = MigrationExecutor(None)
+
+    try:
+        executor.rollback_to(str(target_id))
+    except Exception as e:
+        executor.close()
+        state.close()
+        return f"❌ {e}", 400
+
+    executor.close()
+    state.close()
+    return f"✅ Rolled back to {target_id}"
 
 
 if __name__ == "__main__":
