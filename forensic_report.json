@@ -1,25 +1,25 @@
 {
-    "start_time": "2025-12-04T21:54:43.847379",
+    "start_time": "2025-12-04T23:49:03.085730",
     "migration_stats": {
-        "employees": {
-            "rows": 3,
-            "status": "INCREMENTAL_SYNC",
-            "timestamp": "2025-12-04T21:54:44.573983"
-        },
         "customers": {
             "rows": 2,
             "status": "INCREMENTAL_SYNC",
-            "timestamp": "2025-12-04T21:54:44.574498"
+            "timestamp": "2025-12-04T23:51:19.271405"
         },
-        "products": {
+        "employees": {
             "rows": 3,
             "status": "INCREMENTAL_SYNC",
-            "timestamp": "2025-12-04T21:54:44.576124"
+            "timestamp": "2025-12-04T23:51:19.716208"
         },
         "orders": {
             "rows": 3,
             "status": "INCREMENTAL_SYNC",
-            "timestamp": "2025-12-04T21:54:44.576483"
+            "timestamp": "2025-12-04T23:51:20.076245"
+        },
+        "products": {
+            "rows": 3,
+            "status": "INCREMENTAL_SYNC",
+            "timestamp": "2025-12-04T23:51:20.436285"
         }
     },
     "normalization_stats": {},
@@ -28,23 +28,83 @@
         {
             "table": "customers",
             "type": "NDS_SCORE",
-            "details": "NDS Score: 0/100. Structure looks good."
+            "details": "Score: 0/100. Structure looks good."
         },
         {
             "table": "employees",
             "type": "NDS_SCORE",
-            "details": "NDS Score: 0/100. Structure looks good."
+            "details": "Score: 0/100. Structure looks good."
         },
         {
             "table": "orders",
             "type": "NDS_SCORE",
-            "details": "NDS Score: 0/100. Structure looks good."
+            "details": "Score: 0/100. Structure looks good."
         },
         {
             "table": "products",
             "type": "NDS_SCORE",
-            "details": "NDS Score: 0/100. Structure looks good."
+            "details": "Score: 0/100. Structure looks good."
+        },
+        {
+            "table": "customers",
+            "type": "DUPLICATE_PK",
+            "details": "Found 2 duplicate IDs"
+        },
+        {
+            "table": "orders",
+            "type": "DUPLICATE_PK",
+            "details": "Found 3 duplicate IDs"
+        },
+        {
+            "table": "employees",
+            "type": "DUPLICATE_PK",
+            "details": "Found 3 duplicate IDs"
+        },
+        {
+            "table": "products",
+            "type": "DUPLICATE_PK",
+            "details": "Found 3 duplicate IDs"
+        },
+        {
+            "table": "customers",
+            "type": "NDS_SCORE",
+            "details": "Score: 0/100. Structure looks good."
+        },
+        {
+            "table": "employees",
+            "type": "NDS_SCORE",
+            "details": "Score: 0/100. Structure looks good."
+        },
+        {
+            "table": "orders",
+            "type": "NDS_SCORE",
+            "details": "Score: 0/100. Structure looks good."
+        },
+        {
+            "table": "products",
+            "type": "NDS_SCORE",
+            "details": "Score: 0/100. Structure looks good."
+        },
+        {
+            "table": "customers",
+            "type": "DUPLICATE_PK",
+            "details": "Found 2 duplicate IDs"
+        },
+        {
+            "table": "orders",
+            "type": "DUPLICATE_PK",
+            "details": "Found 3 duplicate IDs"
+        },
+        {
+            "table": "employees",
+            "type": "DUPLICATE_PK",
+            "details": "Found 3 duplicate IDs"
+        },
+        {
+            "table": "products",
+            "type": "DUPLICATE_PK",
+            "details": "Found 3 duplicate IDs"
         }
     ],
-    "end_time": "2025-12-04T21:54:44.591437"
+    "end_time": "2025-12-04T23:51:29.803420"
 }

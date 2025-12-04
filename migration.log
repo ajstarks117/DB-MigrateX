@@ -295,3 +295,136 @@
 2025-12-04 21:54:44,574 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
 2025-12-04 21:54:44,576 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
 2025-12-04 21:54:44,576 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:39:27,128 - INFO - package: mysql.connector.plugins
+2025-12-04 23:39:27,128 - INFO - plugin_name: caching_sha2_password
+2025-12-04 23:39:27,129 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-04 23:39:28,978 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:39:28,999 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 23:39:28,999 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:39:29,013 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:45:47,769 - INFO - package: mysql.connector.plugins
+2025-12-04 23:45:47,771 - INFO - plugin_name: caching_sha2_password
+2025-12-04 23:45:47,771 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-04 23:45:47,785 - ERROR - ERROR in MAIN_CRASH: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+2025-12-04 23:46:42,895 - INFO - package: mysql.connector.plugins
+2025-12-04 23:46:42,895 - INFO - plugin_name: caching_sha2_password
+2025-12-04 23:46:42,895 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-04 23:46:43,177 - ERROR - ERROR in MAIN_CRASH: [WinError 3] The system cannot find the path specified: 'C:\\Users\\admin\\OneDrive\\Documents\\GitHub\\DB-MigrateX\\uploads'
+2025-12-04 23:48:16,848 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 23:48:16,848 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 23:48:16,848 - INFO -  * Restarting with stat
+2025-12-04 23:48:18,131 - WARNING -  * Debugger is active!
+2025-12-04 23:48:18,132 - INFO -  * Debugger PIN: 816-478-337
+2025-12-04 23:48:44,111 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 23:48:44,111 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 23:48:44,111 - INFO -  * Restarting with stat
+2025-12-04 23:48:45,214 - WARNING -  * Debugger is active!
+2025-12-04 23:48:45,217 - INFO -  * Debugger PIN: 816-478-337
+2025-12-04 23:49:01,828 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 23:49:01,828 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 23:49:01,828 - INFO -  * Restarting with stat
+2025-12-04 23:49:04,312 - WARNING -  * Debugger is active!
+2025-12-04 23:49:04,312 - INFO -  * Debugger PIN: 816-478-337
+2025-12-04 23:49:19,272 - INFO - package: mysql.connector.plugins
+2025-12-04 23:49:19,272 - INFO - plugin_name: caching_sha2_password
+2025-12-04 23:49:19,272 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-04 23:49:39,631 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:39] "GET / HTTP/1.1" 200 -
+2025-12-04 23:49:40,388 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:40] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:49:43,384 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:43] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:49:46,383 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:46] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:49:49,379 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:49] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:49:52,384 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:52] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:49:55,385 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:55] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:49:58,384 - INFO - 127.0.0.1 - - [04/Dec/2025 23:49:58] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:01,390 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:01] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:02,354 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:02] "POST /api/upload HTTP/1.1" 200 -
+2025-12-04 23:50:04,380 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:04] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:06,715 - INFO - package: mysql.connector.plugins
+2025-12-04 23:50:06,715 - INFO - plugin_name: caching_sha2_password
+2025-12-04 23:50:06,715 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-04 23:50:07,466 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:07] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:07,531 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 23:50:08,015 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:50:08,349 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:50:08,664 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:50:08,664 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:08] "POST /api/step/migrate HTTP/1.1" 200 -
+2025-12-04 23:50:08,664 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:08] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:10,389 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:10] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:13,386 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:13] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:15,597 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:15] "POST /api/step/analyze HTTP/1.1" 200 -
+2025-12-04 23:50:15,604 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:15] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:16,383 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:16] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:19,149 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:19] "POST /api/step/normalize HTTP/1.1" 200 -
+2025-12-04 23:50:19,160 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:19] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:19,386 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:19] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:22,381 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:22] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:25,382 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:25] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:29,018 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:29] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:34,192 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:34] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:35,009 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:35] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:38,000 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:38] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:41,042 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:41] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:44,011 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:44] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:47,007 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:47] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:50,959 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:50] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:53,007 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:53] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:56,018 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:56] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:50:59,427 - INFO - 127.0.0.1 - - [04/Dec/2025 23:50:59] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:01,397 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:01] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:04,388 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:04] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:07,393 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:07] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:10,390 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:10] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:13,398 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:13] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:16,385 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:16] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:19,271 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 23:51:19,566 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:19] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:19,717 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:51:20,076 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:51:20,436 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 23:51:20,442 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:20] "POST /api/step/migrate HTTP/1.1" 200 -
+2025-12-04 23:51:20,455 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:20] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:22,387 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:22] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:25,391 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:25] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:26,812 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:26] "POST /api/step/analyze HTTP/1.1" 200 -
+2025-12-04 23:51:26,841 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:26] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:28,397 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:28] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:29,807 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:29] "POST /api/step/normalize HTTP/1.1" 200 -
+2025-12-04 23:51:29,819 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:29] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:31,392 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:31] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:34,393 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:34] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:37,391 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:37] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:40,391 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:40] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:43,385 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:43] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:46,384 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:46] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:49,384 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:49] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:52,391 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:52] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:55,388 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:55] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:51:58,414 - INFO - 127.0.0.1 - - [04/Dec/2025 23:51:58] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:01,390 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:01] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:04,388 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:04] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:07,386 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:07] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:10,386 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:10] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:14,014 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:14] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:17,005 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:17] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:20,005 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:20] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:23,003 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:23] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:25,997 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:25] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:29,011 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:29] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:32,004 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:32] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:35,012 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:35] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:38,003 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:38] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:41,010 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:41] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:44,003 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:44] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:47,008 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:47] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:50,002 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:50] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:53,085 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:53] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:56,001 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:56] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:52:59,049 - INFO - 127.0.0.1 - - [04/Dec/2025 23:52:59] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:53:02,035 - INFO - 127.0.0.1 - - [04/Dec/2025 23:53:02] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:53:05,060 - INFO - 127.0.0.1 - - [04/Dec/2025 23:53:05] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:53:08,007 - INFO - 127.0.0.1 - - [04/Dec/2025 23:53:08] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:53:11,034 - INFO - 127.0.0.1 - - [04/Dec/2025 23:53:11] "GET /api/stats HTTP/1.1" 200 -
+2025-12-04 23:53:23,147 - INFO - 127.0.0.1 - - [04/Dec/2025 23:53:23] "GET /api/stats HTTP/1.1" 200 -

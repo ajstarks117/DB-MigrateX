@@ -1,25 +1,27 @@
-# config.py
+import os
 from pathlib import Path
 
+# Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent
 
-# Resolve DBF root and staging SQL path relative to this config file
+# Define a dynamic 'uploads' folder
+UPLOAD_FOLDER = BASE_DIR / "uploads"
+
 DB_CONFIG = {
     "SOURCE": {
         "TYPE": "FOXPRO",
-        "DBF_ROOT": str(BASE_DIR / "data" / "foxpro"),   # your .dbf folder
+        # This now points to the folder where you upload files
+        "DBF_ROOT": str(UPLOAD_FOLDER),
     },
     "TARGET": {
         "TYPE": "MYSQL",
         "HOST": "localhost",
         "PORT": 3306,
         "USER": "root",
-        "PASSWORD": "Ajaya@5621",
-        "DATABASE_NAME": "dbmigratex",  # MySQL database where we’ll import
+        "PASSWORD": "@J!nky@_2005", # Update this
+        "DATABASE_NAME": "dbmigratex",
     },
     "OUTPUT": {
-        # Only used if you ever want to generate a .sql file;
-        # safe to keep even if we don't use it now.
         "STAGING_SQL_PATH": str(BASE_DIR / "sql" / "staging.sql"),
     },
 }

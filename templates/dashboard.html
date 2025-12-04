@@ -1,266 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DB-MigrateX Command Center</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
     <style>
-        :root {
-            --bg-color: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-primary: #2c3e50;
-        }
-        body { background-color: var(--bg-color); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        .dashboard-header {
-            background: linear-gradient(135deg, #0d6efd, #0043a8);
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .stat-card:hover { transform: translateY(-5px); }
-        
-        .icon-box {
-            width: 50px; height: 50px;
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
-        
-        /* Terminal Log Style */
-        .terminal-window {
-            background-color: #1e1e1e;
-            color: #00ff00;
-            font-family: 'Consolas', 'Courier New', monospace;
-            padding: 15px;
-            border-radius: 8px;
-            height: 300px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-        }
-        
-        .table-custom th { background-color: #f8f9fa; border-top: none; }
-        .badge-pulse { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(13, 110, 253, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0); }
-        }
-    </style>
-</head>
-<body>
+      :root {
+        --bg-color: #f4f6f9;
+        --card-bg: #ffffff;
+      }
+      body {
+        background-color: var(--bg-color);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
+      .dashboard-header {
+        background: linear-gradient(135deg, #0d6efd, #0043a8);
+        color: white;
+        padding: 1.5rem 0;
+        margin-bottom: 2rem;
+      }
+      .stat-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Upload Zone */
+      .drop-zone {
+        border: 2px dashed #0d6efd;
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .drop-zone:hover {
+        background: #e9ecef;
+      }
+
+      /* Stepper Buttons */
+      .step-btn {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        font-weight: bold;
+        text-align: left;
+        transition: 0.3s;
+        margin-bottom: 10px;
+      }
+      .step-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .step-active {
+        border: 2px solid #0d6efd;
+        background-color: #e7f1ff;
+      }
+      .step-done {
+        border: 2px solid #198754;
+        background-color: #d1e7dd;
+        color: #0f5132;
+      }
+
+      /* Terminal */
+      .terminal-window {
+        background-color: #1e1e1e;
+        color: #00ff00;
+        font-family: monospace;
+        padding: 15px;
+        border-radius: 8px;
+        height: 300px;
+        overflow-y: auto;
+        font-size: 0.85rem;
+      }
+
+      /* Score Badge */
+      .score-badge {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+      .score-good {
+        background-color: #d1e7dd;
+        color: #0f5132;
+      }
+      .score-bad {
+        background-color: #f8d7da;
+        color: #842029;
+      }
+    </style>
+  </head>
+  <body>
     <div class="dashboard-header text-center">
-        <div class="container">
-            <h1 class="fw-bold"><i class="fa-solid fa-rocket"></i> DB-MigrateX Control Center</h1>
-            <p class="lead opacity-75">FoxPro to MySQL Intelligent Migration Engine</p>
-        </div>
+      <h1 class="fw-bold"><i class="fa-solid fa-rocket"></i> DB-MigrateX</h1>
+      <p class="opacity-75">Intelligent Legacy Migration Engine</p>
     </div>
 
     <div class="container pb-5">
-        
-        <div class="row g-4 mb-4">
-            <div class="col-md-4">
-                <div class="card stat-card p-3">
-                    <div class="d-flex align-items-center">
-                        <div class="icon-box bg-primary bg-opacity-10 text-primary">
-                            <i class="fa-regular fa-clock"></i>
-                        </div>
-                        <div>
-                            <h6 class="text-muted mb-0">Last Execution</h6>
-                            <h5 class="fw-bold mb-0" id="last-run">Waiting...</h5>
-                        </div>
-                    </div>
-                </div>
+      <div class="row g-4 mb-4">
+        <div class="col-lg-5">
+          <div class="card stat-card h-100">
+            <div class="card-header bg-white fw-bold">
+              <i class="fa-solid fa-sliders"></i> Migration Workflow
             </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label class="small text-muted fw-bold"
+                  >STEP 1: UPLOAD DATA</label
+                >
+                <div
+                  class="drop-zone"
+                  id="dropZone"
+                  onclick="document.getElementById('fileInput').click()"
+                >
+                  <i
+                    class="fa-solid fa-cloud-arrow-up fa-2x text-primary mb-2"
+                  ></i>
+                  <h6 id="upload-text">Click to upload .DBF files</h6>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    multiple
+                    accept=".dbf"
+                    hidden
+                    onchange="handleUpload(this.files)"
+                  />
+                </div>
+              </div>
 
-            <div class="col-md-4">
-                <div class="card stat-card p-3">
-                    <div class="d-flex align-items-center">
-                        <div class="icon-box bg-danger bg-opacity-10 text-danger">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                        </div>
-                        <div>
-                            <h6 class="text-muted mb-0">Critical Errors</h6>
-                            <h5 class="fw-bold mb-0" id="error-count">0</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              <label class="small text-muted fw-bold">PIPELINE ACTIONS</label>
+              <button
+                id="btn-migrate"
+                class="btn btn-light step-btn"
+                onclick="runStep('migrate')"
+                disabled
+              >
+                <i class="fa-solid fa-gear"></i> 2. Convert & Score
+              </button>
+              <button
+                id="btn-analyze"
+                class="btn btn-light step-btn"
+                onclick="runStep('analyze')"
+                disabled
+              >
+                <i class="fa-solid fa-magnifying-glass-chart"></i> 3. Quality
+                Scan
+              </button>
+              <button
+                id="btn-normalize"
+                class="btn btn-light step-btn"
+                onclick="runStep('normalize')"
+                disabled
+              >
+                <i class="fa-solid fa-wand-magic-sparkles"></i> 4. Normalize
+              </button>
 
-            <div class="col-md-4">
-                <div class="card stat-card p-3">
-                    <div class="d-flex align-items-center">
-                        <div class="icon-box bg-warning bg-opacity-10 text-warning">
-                            <i class="fa-solid fa-bugs"></i>
-                        </div>
-                        <div>
-                            <h6 class="text-muted mb-0">Quality Issues</h6>
-                            <h5 class="fw-bold mb-0" id="quality-count">0</h5>
-                        </div>
-                    </div>
-                </div>
+              <div
+                id="status-msg"
+                class="mt-2 text-center small fw-bold text-primary"
+              ></div>
             </div>
+          </div>
         </div>
 
-        <div class="row g-4 mb-4">
-            <div class="col-lg-6">
-                <div class="card stat-card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold mb-4">📊 Migration Volume</h5>
-                        <canvas id="migrationChart"></canvas>
-                    </div>
-                </div>
+        <div class="col-lg-7">
+          <div class="card stat-card h-100">
+            <div class="card-header bg-white fw-bold text-primary">
+              <i class="fa-solid fa-brain"></i> AI Normalization Intelligence
             </div>
-            
-            <div class="col-lg-6">
-                <div class="card stat-card h-100">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title fw-bold">🖥️ Live System Logs</h5>
-                            <span class="badge bg-success badge-pulse">● Live</span>
-                        </div>
-                        <div class="terminal-window" id="log-window">
-                            <div>> System initialized...</div>
-                            <div>> Waiting for migration data...</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Table</th>
+                      <th>NDS Score</th>
+                      <th>AI Recommendation</th>
+                    </tr>
+                  </thead>
+                  <tbody id="nds-table-body">
+                    <tr>
+                      <td colspan="3" class="text-center text-muted py-4">
+                        Run "Convert & Score" to see AI analysis.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="card stat-card mb-4">
-            <div class="card-header bg-white border-0 py-3">
-                <h5 class="fw-bold m-0 text-danger"><i class="fa-solid fa-shield-halved"></i> Data Quality Alerts</h5>
+      <div class="row g-4 mb-4">
+        <div class="col-md-4">
+          <div class="card stat-card p-3">
+            <div class="d-flex align-items-center">
+              <div class="fs-1 text-primary me-3">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <div>
+                <h6 class="text-muted mb-0">Last Execution</h6>
+                <h5 class="fw-bold mb-0" id="last-run">Waiting...</h5>
+              </div>
             </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-custom table-hover align-middle mb-0">
-                        <thead class="bg-light">
-                            <tr>
-                                <th class="ps-4">Table</th>
-                                <th>Issue Type</th>
-                                <th>Description</th>
-                                <th>Severity</th>
-                            </tr>
-                        </thead>
-                        <tbody id="quality-table-body">
-                            <tr><td colspan="4" class="text-center py-4 text-muted">No issues detected.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+          </div>
         </div>
-        
+        <div class="col-md-4">
+          <div class="card stat-card p-3">
+            <div class="d-flex align-items-center">
+              <div class="fs-1 text-danger me-3">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div>
+                <h6 class="text-muted mb-0">Critical Errors</h6>
+                <h5 class="fw-bold mb-0" id="error-count">0</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card stat-card p-3">
+            <div class="d-flex align-items-center">
+              <div class="fs-1 text-warning me-3">
+                <i class="fa-solid fa-bug"></i>
+              </div>
+              <div>
+                <h6 class="text-muted mb-0">Quality Issues</h6>
+                <h5 class="fw-bold mb-0" id="quality-count">0</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+          <div class="card stat-card h-100">
+            <div class="card-body">
+              <h5 class="card-title fw-bold mb-4">📊 Migration Volume</h5>
+              <canvas id="migrationChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card stat-card h-100">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">🖥️ Live System Logs</h5>
+              <div class="terminal-window" id="log-window">
+                <div>> System ready...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        // --- 1. Initialize Chart ---
-        const ctx = document.getElementById('migrationChart').getContext('2d');
-        const migrationChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Rows Migrated',
-                    data: [],
-                    backgroundColor: 'rgba(13, 110, 253, 0.7)',
-                    borderColor: 'rgba(13, 110, 253, 1)',
-                    borderWidth: 1,
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: { y: { beginAtZero: true } }
-            }
+      // --- UPLOAD LOGIC ---
+      async function handleUpload(files) {
+        const formData = new FormData();
+        for (let file of files) formData.append("files[]", file);
+
+        document.getElementById("upload-text").innerText = "Uploading...";
+
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
         });
+        const data = await res.json();
 
-        // --- 2. Live Data Polling ---
-        function fetchData() {
-            fetch('/api/stats')
-                .then(response => response.json())
-                .then(data => updateDashboard(data))
-                .catch(err => console.error("Error fetching stats:", err));
+        if (data.status === "success") {
+          document.getElementById(
+            "upload-text"
+          ).innerHTML = `<span class='text-success'>✅ ${data.count} Files Ready</span>`;
+          document.getElementById("dropZone").style.borderColor = "#198754";
+          document.getElementById("btn-migrate").disabled = false; // Unlock next step
+        }
+      }
+
+      // --- STEPPER LOGIC ---
+      async function runStep(step) {
+        const btn = document.getElementById(`btn-${step}`);
+        const msg = document.getElementById("status-msg");
+
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing...`;
+        msg.innerText = `Running: ${step.toUpperCase()}...`;
+
+        try {
+          const res = await fetch(`/api/step/${step}`, { method: "POST" });
+          const data = await res.json();
+
+          if (data.status === "success") {
+            btn.className = "btn btn-success step-btn step-done";
+            btn.innerHTML = `✅ ${
+              step.charAt(0).toUpperCase() + step.slice(1)
+            } Complete`;
+            msg.innerText = "";
+
+            // Unlock next button in chain
+            if (step === "migrate")
+              document.getElementById("btn-analyze").disabled = false;
+            if (step === "analyze")
+              document.getElementById("btn-normalize").disabled = false;
+
+            fetchStats(); // Refresh data immediately
+          } else {
+            msg.innerText = `Error: ${data.message}`;
+            btn.innerHTML = `❌ Failed`;
+          }
+        } catch (e) {
+          msg.innerText = "Connection Error";
+        }
+      }
+
+      // --- CHART & STATS LOGIC ---
+      const ctx = document.getElementById("migrationChart").getContext("2d");
+      const migrationChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [],
+          datasets: [{ label: "Rows", data: [], backgroundColor: "#0d6efd" }],
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } },
+      });
+
+      function fetchStats() {
+        fetch("/api/stats")
+          .then((r) => r.json())
+          .then(updateDashboard);
+      }
+
+      function updateDashboard(payload) {
+        const raw = payload.raw;
+        const charts = payload.charts;
+
+        // Basic Stats
+        document.getElementById("last-run").innerText = raw.start_time
+          ? new Date(raw.start_time).toLocaleTimeString()
+          : "N/A";
+        document.getElementById("error-count").innerText =
+          charts.quality_score[0];
+        document.getElementById("quality-count").innerText =
+          charts.quality_score[1];
+
+        // Chart
+        migrationChart.data.labels = charts.labels;
+        migrationChart.data.datasets[0].data = charts.row_counts;
+        migrationChart.update();
+
+        // NDS Score Table (New Feature)
+        const ndsBody = document.getElementById("nds-table-body");
+        const issues = raw.data_quality_issues || [];
+        const ndsIssues = issues.filter((i) => i.type === "NDS_SCORE");
+
+        if (ndsIssues.length > 0) {
+          ndsBody.innerHTML = ndsIssues
+            .map((i) => {
+              const score = parseInt(i.details.match(/Score: (\d+)/)[1]);
+              const badgeClass = score > 50 ? "score-bad" : "score-good";
+              const label =
+                score > 50 ? "Needs Normalization" : "Good Structure";
+              return `<tr>
+                        <td class="fw-bold">${i.table}</td>
+                        <td><span class="score-badge ${badgeClass}">${score}/100</span></td>
+                        <td class="small text-muted">${label}</td>
+                    </tr>`;
+            })
+            .join("");
         }
 
-        function updateDashboard(payload) {
-            const raw = payload.raw;
-            const charts = payload.charts;
-
-            // Update Top Stats
-            document.getElementById('last-run').innerText = raw.start_time || "N/A";
-            document.getElementById('error-count').innerText = charts.quality_score[0];
-            document.getElementById('quality-count').innerText = charts.quality_score[1];
-
-            // Update Chart
-            migrationChart.data.labels = charts.labels;
-            migrationChart.data.datasets[0].data = charts.row_counts;
-            migrationChart.update();
-
-            // Update Quality Table
-            const tbody = document.getElementById('quality-table-body');
-            const issues = raw.data_quality_issues || [];
-            
-          // ... inside updateDashboard function ...
-            if (issues.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-success"><i class="fa-solid fa-check-circle"></i> Clean Dataset</td></tr>';
-            } else {
-                tbody.innerHTML = issues.map(issue => {
-                    // 1. Default to Red/High
-                    let severityBadge = '<span class="badge bg-danger">High</span>';
-                    
-                    // 2. Check if the score is good (0/100, 10/100, etc.)
-                    // If the description says "Structure looks good" OR score is low, make it Green
-                    if (issue.details.includes("Score: 0/") || issue.details.includes("Score: 1") || issue.details.includes("Score: 2") || issue.details.includes("looks good")) {
-                        severityBadge = '<span class="badge bg-success">Low</span>';
-                    }
-                    
-                    return `
-                    <tr>
-                        <td class="ps-4 fw-bold">${issue.table}</td>
-                        <td><span class="badge bg-warning text-dark">${issue.type}</span></td>
-                        <td>${issue.details}</td>
-                        <td>${severityBadge}</td>
-                    </tr>
-                `}).join('');
-            }
-
-            // Update Terminal Log (Simulated from events)
-            const logWindow = document.getElementById('log-window');
-            // If we have migration stats, generate log lines
-            let logHTML = `<div>> System Check: OK</div>`;
-            logHTML += `<div>> Last Update: ${new Date().toLocaleTimeString()}</div>`;
-            
-            if(raw.errors && raw.errors.length > 0) {
-                 logHTML += `<div style="color:#ff5555">> [ERROR] Detected ${raw.errors.length} critical faults.</div>`;
-            }
-            
-            for (const [table, info] of Object.entries(raw.migration_stats || {})) {
-                logHTML += `<div>> [MIGRATE] ${table}: ${info.rows} rows [${info.status}]</div>`;
-            }
-            
-            logWindow.innerHTML = logHTML;
+        // Logs
+        const logWindow = document.getElementById("log-window");
+        let logHTML = `<div>> System Ready.</div>`;
+        for (const [table, info] of Object.entries(raw.migration_stats || {})) {
+          logHTML += `<div>> [MIGRATE] ${table}: ${info.rows} rows [${info.status}]</div>`;
         }
+        logWindow.innerHTML = logHTML;
+      }
 
-        // Poll every 2 seconds
-        setInterval(fetchData, 2000);
-        fetchData(); // Initial call
+      setInterval(fetchStats, 3000);
+      fetchStats();
     </script>
-</body>
+  </body>
 </html>
