@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Normalization Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Normalization Analysis (raw_students)</h1>
+
+  <h2>Columns</h2>
+  <pre>{{ columns }}</pre>
+
+  <h2>Functional Dependencies (A → [B,...])</h2>
+  <pre>{{ fds }}</pre>
+
+  <h2>Repeating Groups</h2>
+  <pre>{{ repeating }}</pre>
+
+  <h2>Duplicate Columns</h2>
+  <pre>{{ duplicates }}</pre>
+
+  <p><a href="{{ url_for('index') }}" class="btn">Back</a></p>
+</body>
+</html>

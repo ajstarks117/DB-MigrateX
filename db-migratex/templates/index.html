@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DB-MigrateX</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>DB-MigrateX: Legacy → Normalized SQL</h1>
+
+  <section>
+    <h2>Applied Migrations</h2>
+    <ul>
+      {% if applied %}
+        {% for m in applied %}
+          <li>{{ m }}</li>
+        {% endfor %}
+      {% else %}
+        <li>None</li>
+      {% endif %}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Pending Migrations</h2>
+    <ul>
+      {% if pending %}
+        {% for m in pending %}
+          <li>{{ m }}</li>
+        {% endfor %}
+      {% else %}
+        <li>None</li>
+      {% endif %}
+    </ul>
+  </section>
+
+  <div class="btn-row">
+    <a href="{{ url_for('apply_migrations') }}" class="btn">Apply Pending Migrations</a>
+    <a href="{{ url_for('legacy_import') }}" class="btn">Import Legacy BoxPro → raw_students</a>
+    <a href="{{ url_for('normalize_analyze') }}" class="btn">Analyze & Detect Anomalies</a>
+    <a href="{{ url_for('normalize_migrate') }}" class="btn">Migrate to Normalized Schema</a>
+  </div>
+</body>
+</html>
