@@ -1,22 +1,35 @@
 # app.py
-
 from migrmgr.executor_mysql import MySQLMigrationExecutor
 from normalizer.normalizer import NormalizationExecutor
+from cleaner.cleanser import DataCleanser
+from utils.forensics import recorder
 
 def main():
-    # 1. Migrate FoxPro -> staging DB (dbmigratex)
-    print("=== STEP 1: FoxPro -> MySQL staging (dbmigratex) ===")
-    mig = MySQLMigrationExecutor()
-    mig.run_full_migration()
+    try:
+        # 1. Migration
+        print("=== STEP 1: FoxPro -> Staging ===")
+        mig = MySQLMigrationExecutor()
+        mig.run_full_migration()
 
-    # 2. Normalize staging data -> normalized DB (dbmigratex_norm)
-    print("\n=== STEP 2: Normalization into dbmigratex_norm ===")
-    norm = NormalizationExecutor()
-    norm.run_full_normalization()
+        # 2. Data Cleaning / Analysis
+        print("\n=== STEP 2: Data Quality Scan ===")
+        cleaner = DataCleanser()
+        cleaner.run_full_scan()
 
-    print("\n✅ All done!")
-    print("   Staging DB       :", mig.target_cfg['DATABASE_NAME'])
-    print("   Normalized DB    :", norm.normalized_db)
+        # 3. Normalization
+        print("\n=== STEP 3: Normalization ===")
+        norm = NormalizationExecutor()
+        norm.run_full_normalization()
+
+        print("\n✅ All done!")
+    
+    except Exception as e:
+        recorder.log_error("MAIN_LOOP", str(e))
+        print("❌ Fatal Error:", e)
+    
+    finally:
+        # Always save the report at the end
+        recorder.save_report()
 
 if __name__ == "__main__":
     main()

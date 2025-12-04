@@ -1,6 +1,7 @@
 # hex_to_dbf.py
 import os
 import binascii
+from pathlib import Path
 
 def hex_to_dbf(hex_path, dbf_path):
     with open(hex_path, "r") as f:
@@ -10,10 +11,15 @@ def hex_to_dbf(hex_path, dbf_path):
         f.write(binary)
     print("Created:", dbf_path)
 
-folder = "./data/foxpro"
+BASE_DIR = Path(__file__).resolve().parent
+folder = BASE_DIR / "data" / "foxpro"
 
-for file in os.listdir(folder):
-    if file.lower().endswith(".hex"):
-        name = file[:-4] + ".dbf"
-        hex_to_dbf(os.path.join(folder, file),
-                   os.path.join(folder, name))
+if not folder.exists():
+    print(f"Error: folder not found: {folder}")
+    print("Make sure you're running the script from the project or that the `data/foxpro` directory exists.")
+    raise SystemExit(1)
+
+for entry in folder.iterdir():
+    if entry.is_file() and entry.suffix.lower() == ".hex":
+        name = entry.with_suffix('.dbf')
+        hex_to_dbf(str(entry), str(name))

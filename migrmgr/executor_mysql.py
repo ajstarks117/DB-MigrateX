@@ -3,6 +3,7 @@
 from config import DB_CONFIG
 from db.db_connection import get_db_connection, create_database_if_not_exists
 from legacy.importer_foxpro import FoxProImporter
+from utils.forensics import recorder
 
 
 class MySQLMigrationExecutor:
@@ -36,7 +37,13 @@ class MySQLMigrationExecutor:
                 col_defs_parts.append(f"`{col['name']}` {col['sql_type']} NULL")
 
             col_defs = ",\n  ".join(col_defs_parts)
-            ddl = f"CREATE TABLE IF NOT EXISTS `{tname}` (\n  {col_defs}\n);"
+            
+            # --- FIX APPLIED HERE ---
+            # Drop the table if it exists so we don't append duplicates on re-runs
+            cur.execute(f"DROP TABLE IF EXISTS `{tname}`;")
+            
+            # Create the table (removed 'IF NOT EXISTS' since we just dropped it)
+            ddl = f"CREATE TABLE `{tname}` (\n  {col_defs}\n);"
 
             print(f"\nCreating table in MySQL: {tname}")
             # print(ddl)  # uncomment if you want to see full DDL
@@ -59,31 +66,39 @@ class MySQLMigrationExecutor:
 
         for tname in tables:
             print(f"\nInserting data into MySQL table: {tname}")
+            try:
+                for batch in self.importer.get_table_rows(tname, batch_size=200):
+                    if not batch:
+                        continue
 
-            for batch in self.importer.get_table_rows(tname, batch_size=200):
-                if not batch:
-                    continue
+                    # Determine list of columns from first row (keys of dict)
+                    first_row = batch[0]
+                    cols = list(first_row.keys())
 
-                # Determine list of columns from first row (keys of dict)
-                first_row = batch[0]
-                cols = list(first_row.keys())
+                    # Build parameterized query
+                    col_list = ", ".join(f"`{c}`" for c in cols)
+                    placeholders = ", ".join(["%s"] * len(cols))
+                    sql = f"INSERT INTO `{tname}` ({col_list}) VALUES ({placeholders})"
 
-                # Build parameterized query
-                col_list = ", ".join(f"`{c}`" for c in cols)
-                placeholders = ", ".join(["%s"] * len(cols))
-                sql = f"INSERT INTO `{tname}` ({col_list}) VALUES ({placeholders})"
+                    # Build list of tuples of values
+                    values_list = []
+                    for row in batch:
+                        values = []
+                        for c in cols:
+                            values.append(row[c])  # None/int/float/str/bool
+                        values_list.append(tuple(values))
 
-                # Build list of tuples of values
-                values_list = []
-                for row in batch:
-                    values = []
-                    for c in cols:
-                        values.append(row[c])  # None/int/float/str/bool
-                    values_list.append(tuple(values))
+                    # Execute batch insert
+                    cur.executemany(sql, values_list)
+                    conn.commit()
 
-                # Execute batch insert
-                cur.executemany(sql, values_list)
-                conn.commit()
+                # AFTER loop finishes for a table:
+                total_rows = self.importer.get_record_count(tname)  # assumed available
+                recorder.log_migration(tname, total_rows, "SUCCESS")
+
+            except Exception as e:
+                recorder.log_error(f"Migration-Table-{tname}", str(e))
+                raise e
 
             print(f"✅ Data inserted into {tname}")
 

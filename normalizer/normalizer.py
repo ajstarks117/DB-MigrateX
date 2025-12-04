@@ -211,7 +211,7 @@ class NormalizationExecutor:
         print("➡ Populating customers_norm...")
         cur.execute(
             f"""
-            INSERT INTO customers_norm (cust_id, name, city_id, phone)
+            INSERT IGNORE INTO customers_norm (cust_id, name, city_id, phone)
             SELECT
                 c.CUST_ID,
                 c.NAME,
@@ -238,7 +238,7 @@ class NormalizationExecutor:
         print("➡ Populating employees_norm...")
         cur.execute(
             f"""
-            INSERT INTO employees_norm (emp_id, emp_name, dept_id, doj, active)
+          INSERT IGNORE INTO employees_norm (emp_id, emp_name, dept_id, doj, active)
             SELECT
                 e.EMP_ID,
                 e.EMP_NAME,
@@ -255,7 +255,7 @@ class NormalizationExecutor:
         print("➡ Populating products_norm...")
         cur.execute(
             f"""
-            INSERT INTO products_norm (prod_id, prod_name, price, stock)
+            INSERT IGNORE INTO products_norm (prod_id, prod_name, price, stock)
             SELECT
                 PROD_ID,
                 PROD_NAME,
@@ -269,7 +269,7 @@ class NormalizationExecutor:
         print("➡ Populating orders_norm...")
         cur.execute(
             f"""
-            INSERT INTO orders_norm (order_id, cust_id, order_dt, amount)
+            INSERT IGNORE INTO orders_norm (order_id, cust_id, order_dt, amount)
             SELECT
                 ORDER_ID,
                 CUST_ID,

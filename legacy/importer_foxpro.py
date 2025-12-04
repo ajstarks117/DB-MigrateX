@@ -1,6 +1,7 @@
 # legacy/importer_foxpro.py
 
 import os
+import struct
 from legacy.utils.dbf_reader import DBFReader
 from legacy.utils.type_mapping import map_foxpro_type_to_sql
 
@@ -45,3 +46,16 @@ class FoxProImporter:
             })
             idx += 1
         return sql_cols
+
+    def get_record_count(self, table_name):
+        """
+        Read the record count from a DBF header (little-endian 4-byte integer at offset 4).
+        """
+        path = os.path.join(self.dbf_root, table_name + ".dbf")
+        with open(path, "rb") as f:
+            f.seek(4)
+            data = f.read(4)
+            if len(data) < 4:
+                raise ValueError(f"Unexpected DBF header size for {path}")
+            count = struct.unpack("<I", data)[0]
+        return count

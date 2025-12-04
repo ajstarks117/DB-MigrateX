@@ -1,0 +1,50 @@
+2025-12-04 20:23:20,859 - ERROR - ERROR in Migration-Table-customers: 'FoxProImporter' object has no attribute 'get_record_count'
+2025-12-04 20:23:20,860 - ERROR - ERROR in MAIN_LOOP: 'FoxProImporter' object has no attribute 'get_record_count'
+2025-12-04 20:28:57,051 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 20:28:57,051 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 20:28:57,061 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 20:28:57,553 - WARNING -  * Debugger is active!
+2025-12-04 20:28:57,557 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 20:29:04,220 - INFO - 127.0.0.1 - - [04/Dec/2025 20:29:04] "GET / HTTP/1.1" 200 -
+2025-12-04 20:29:06,425 - INFO - 127.0.0.1 - - [04/Dec/2025 20:29:06] "GET / HTTP/1.1" 200 -
+2025-12-04 20:29:07,059 - INFO - 127.0.0.1 - - [04/Dec/2025 20:29:07] "GET / HTTP/1.1" 200 -
+2025-12-04 20:29:37,803 - ERROR - ERROR in Migration-Table-customers: 'FoxProImporter' object has no attribute 'get_record_count'
+2025-12-04 20:29:37,804 - ERROR - ERROR in MAIN_LOOP: 'FoxProImporter' object has no attribute 'get_record_count'
+2025-12-04 20:30:21,395 - INFO - 127.0.0.1 - - [04/Dec/2025 20:30:21] "GET / HTTP/1.1" 200 -
+2025-12-04 20:30:22,027 - INFO - 127.0.0.1 - - [04/Dec/2025 20:30:22] "GET / HTTP/1.1" 200 -
+2025-12-04 20:30:22,416 - INFO - 127.0.0.1 - - [04/Dec/2025 20:30:22] "GET / HTTP/1.1" 200 -
+2025-12-04 20:32:34,447 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\legacy\\importer_foxpro.py', reloading
+2025-12-04 20:32:34,447 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\legacy\\importer_foxpro.py', reloading
+2025-12-04 20:32:34,448 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\legacy\\importer_foxpro.py', reloading
+2025-12-04 20:32:34,902 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 20:32:35,418 - WARNING -  * Debugger is active!
+2025-12-04 20:32:35,420 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 20:36:12,448 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 20:36:12,448 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 20:36:12,459 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 20:36:12,977 - WARNING -  * Debugger is active!
+2025-12-04 20:36:12,979 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 20:36:35,878 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 20:36:35,881 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 20:36:35,885 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 20:36:35,889 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 20:36:55,390 - INFO - 127.0.0.1 - - [04/Dec/2025 20:36:55] "GET / HTTP/1.1" 200 -
+2025-12-04 20:36:59,237 - INFO - 127.0.0.1 - - [04/Dec/2025 20:36:59] "POST /run_migration HTTP/1.1" 200 -
+2025-12-04 20:36:59,325 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 20:36:59,329 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 20:36:59,333 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 20:36:59,336 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 20:42:19,272 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\migrmgr\\executor_mysql.py', reloading
+2025-12-04 20:42:19,274 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\migrmgr\\executor_mysql.py', reloading
+2025-12-04 20:42:19,274 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\migrmgr\\executor_mysql.py', reloading
+2025-12-04 20:42:19,519 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 20:42:20,196 - WARNING -  * Debugger is active!
+2025-12-04 20:42:20,200 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 20:42:21,198 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\migrmgr\\executor_mysql.py', reloading
+2025-12-04 20:42:21,198 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\migrmgr\\executor_mysql.py', reloading
+2025-12-04 20:42:21,199 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\migrmgr\\executor_mysql.py', reloading
+2025-12-04 20:42:21,313 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 20:42:21,954 - WARNING -  * Debugger is active!
+2025-12-04 20:42:21,956 - INFO -  * Debugger PIN: 119-890-527
