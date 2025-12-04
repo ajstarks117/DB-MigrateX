@@ -2,34 +2,47 @@
 from flask import Flask, render_template, jsonify
 import json
 import os
-import threading
-from app import main as run_migration_pipeline  # Import your existing main logic
 
 app = Flask(__name__)
 
 REPORT_FILE = "forensic_report.json"
 
-def load_report():
-    if not os.path.exists(REPORT_FILE):
-        return {"error": "No report found. Run migration first."}
-    with open(REPORT_FILE, "r") as f:
-        return json.load(f)
+def load_data():
+    if os.path.exists(REPORT_FILE):
+        with open(REPORT_FILE, 'r') as f:
+            return json.load(f)
+    return {}
 
-@app.route("/")
+@app.route('/')
 def index():
-    data = load_report()
-    return render_template("dashboard.html", data=data)
+    return render_template('dashboard.html')
 
-@app.route("/run_migration", methods=["POST"])
-def trigger_migration():
-    # Run in separate thread so UI doesn't freeze
-    thread = threading.Thread(target=run_migration_pipeline)
-    thread.start()
-    return jsonify({"status": "Migration started", "message": "Watch logs for progress"})
+@app.route('/api/stats')
+def stats():
+    """Returns JSON data for the dashboard to consume."""
+    data = load_data()
+    
+    # Process data for Charts
+    migration = data.get("migration_stats", {})
+    
+    # 1. Bar Chart Data (Rows per Table)
+    labels = list(migration.keys())
+    values = [info.get("rows", 0) for info in migration.values()]
+    
+    # 2. Status Counts (Success vs Fail)
+    errors = len(data.get("errors", []))
+    quality_issues = len(data.get("data_quality_issues", []))
+    
+    response = {
+        "raw": data,
+        "charts": {
+            "labels": labels,
+            "row_counts": values,
+            "quality_score": [errors, quality_issues] 
+        }
+    }
+    return jsonify(response)
 
-@app.route("/api/stats")
-def get_stats():
-    return jsonify(load_report())
-
-if __name__ == "__main__":
+if __name__ == '__main__':
+    print("🚀 Modern Dashboard running at http://127.0.0.1:5000")
     app.run(debug=True, port=5000)

@@ -1,0 +1,25 @@
+# Data Quality Rules Configuration
+
+customers:
+  NAME:
+    - type: required
+      msg: "Customer name is missing"
+  PHONE:
+    - type: regex
+      pattern: "^[0-9]{10}$"  # Expecting exactly 10 digits
+      msg: "Invalid Phone Number (Must be 10 digits)"
+
+orders:
+  AMOUNT:
+    - type: range
+      min: 1
+      msg: "Order amount cannot be zero or negative"
+  ORDER_DT:
+    - type: required
+      msg: "Order Date is missing"
+
+employees:
+  DEPT:
+    - type: enum
+      values: ["IT", "HR", "SALES", "ADMIN"]
+      msg: "Invalid Department Name"

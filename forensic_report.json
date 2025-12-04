@@ -1,25 +1,25 @@
 {
-    "start_time": "2025-12-04T20:36:12.955779",
+    "start_time": "2025-12-04T21:54:43.847379",
     "migration_stats": {
-        "customers": {
-            "rows": 2,
-            "status": "SUCCESS",
-            "timestamp": "2025-12-04T20:36:59.325446"
-        },
         "employees": {
             "rows": 3,
-            "status": "SUCCESS",
-            "timestamp": "2025-12-04T20:36:59.329075"
+            "status": "INCREMENTAL_SYNC",
+            "timestamp": "2025-12-04T21:54:44.573983"
         },
-        "orders": {
-            "rows": 3,
-            "status": "SUCCESS",
-            "timestamp": "2025-12-04T20:36:59.333520"
+        "customers": {
+            "rows": 2,
+            "status": "INCREMENTAL_SYNC",
+            "timestamp": "2025-12-04T21:54:44.574498"
         },
         "products": {
             "rows": 3,
-            "status": "SUCCESS",
-            "timestamp": "2025-12-04T20:36:59.336553"
+            "status": "INCREMENTAL_SYNC",
+            "timestamp": "2025-12-04T21:54:44.576124"
+        },
+        "orders": {
+            "rows": 3,
+            "status": "INCREMENTAL_SYNC",
+            "timestamp": "2025-12-04T21:54:44.576483"
         }
     },
     "normalization_stats": {},
@@ -27,29 +27,24 @@
     "data_quality_issues": [
         {
             "table": "customers",
-            "type": "DUPLICATE_ID",
-            "details": "ID 1 appears 13 times"
+            "type": "NDS_SCORE",
+            "details": "NDS Score: 0/100. Structure looks good."
         },
         {
-            "table": "customers",
-            "type": "DUPLICATE_ID",
-            "details": "ID 2 appears 13 times"
-        },
-        {
-            "table": "orders",
-            "type": "DUPLICATE_ID",
-            "details": "ID 1001 appears 3 times"
+            "table": "employees",
+            "type": "NDS_SCORE",
+            "details": "NDS Score: 0/100. Structure looks good."
         },
         {
             "table": "orders",
-            "type": "DUPLICATE_ID",
-            "details": "ID 1002 appears 3 times"
+            "type": "NDS_SCORE",
+            "details": "NDS Score: 0/100. Structure looks good."
         },
         {
-            "table": "orders",
-            "type": "DUPLICATE_ID",
-            "details": "ID 1003 appears 3 times"
+            "table": "products",
+            "type": "NDS_SCORE",
+            "details": "NDS Score: 0/100. Structure looks good."
         }
     ],
-    "end_time": "2025-12-04T20:36:59.394643"
+    "end_time": "2025-12-04T21:54:44.591437"
 }

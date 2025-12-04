@@ -48,3 +48,250 @@
 2025-12-04 20:42:21,313 - INFO -  * Restarting with watchdog (windowsapi)
 2025-12-04 20:42:21,954 - WARNING -  * Debugger is active!
 2025-12-04 20:42:21,956 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:18:09,608 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 21:18:09,608 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 21:18:09,618 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:18:10,196 - WARNING -  * Debugger is active!
+2025-12-04 21:18:10,198 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:18:10,259 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\functional.py', reloading
+2025-12-04 21:18:10,272 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_tensor.py', reloading
+2025-12-04 21:18:10,278 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\storage.py', reloading
+2025-12-04 21:18:10,282 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_tensor_str.py', reloading
+2025-12-04 21:18:10,284 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\amp\\__init__.py', reloading
+2025-12-04 21:18:10,285 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\amp\\autocast_mode.py', reloading
+2025-12-04 21:18:10,287 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\amp\\grad_scaler.py', reloading
+2025-12-04 21:18:10,289 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\random.py', reloading
+2025-12-04 21:18:10,290 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\serialization.py', reloading
+2025-12-04 21:18:10,298 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_lowrank.py', reloading
+2025-12-04 21:18:10,300 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\autograd\\__init__.py', reloading
+2025-12-04 21:18:10,302 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\autograd\\grad_mode.py', reloading
+2025-12-04 21:18:10,303 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\signal\\__init__.py', reloading
+2025-12-04 21:18:10,304 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_ops.py', reloading
+2025-12-04 21:18:10,308 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_classes.py', reloading
+2025-12-04 21:18:10,309 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_lobpcg.py', reloading
+2025-12-04 21:18:10,312 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_higher_order_ops\\__init__.py', reloading
+2025-12-04 21:18:10,313 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_higher_order_ops\\cond.py', reloading
+2025-12-04 21:18:10,316 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_higher_order_ops\\while_loop.py', reloading
+2025-12-04 21:18:10,318 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\func\\__init__.py', reloading
+2025-12-04 21:18:10,319 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torch\\_functorch\\apis.py', reloading
+2025-12-04 21:18:10,321 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torchaudio\\__init__.py', reloading
+2025-12-04 21:18:10,325 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torchaudio\\_backend\\__init__.py', reloading
+2025-12-04 21:18:10,325 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torchaudio\\_backend\\common.py', reloading
+2025-12-04 21:18:10,326 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torchgen\\__init__.py', reloading
+2025-12-04 21:18:10,326 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torchvision\\__init__.py', reloading
+2025-12-04 21:18:10,326 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\torio\\__init__.py', reloading
+2025-12-04 21:18:10,329 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\__init__.py', reloading
+2025-12-04 21:18:10,659 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_sentencepiece_objects.py', reloading
+2025-12-04 21:18:10,660 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_tokenizers_objects.py', reloading
+2025-12-04 21:18:10,663 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_tensorflow_text_objects.py', reloading
+2025-12-04 21:18:10,663 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_keras_nlp_objects.py', reloading
+2025-12-04 21:18:10,664 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_vision_objects.py', reloading
+2025-12-04 21:18:10,667 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_torchvision_objects.py', reloading
+2025-12-04 21:18:10,668 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_timm_and_torchvision_objects.py', reloading
+2025-12-04 21:18:10,672 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_pt_objects.py', reloading
+2025-12-04 21:18:10,703 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_tf_objects.py', reloading
+2025-12-04 21:18:10,712 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_essentia_and_librosa_and_pretty_midi_and_scipy_and_torch_objects.py', reloading
+2025-12-04 21:18:10,713 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_torchaudio_objects.py', reloading
+2025-12-04 21:18:10,714 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\dummy_flax_objects.py', reloading
+2025-12-04 21:18:10,719 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\__init__.py', reloading
+2025-12-04 21:18:10,721 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\transformers\\utils\\import_utils.py', reloading
+2025-12-04 21:18:10,732 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\typer\\__init__.py', reloading
+2025-12-04 21:18:10,737 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\typer\\main.py', reloading
+2025-12-04 21:18:10,742 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\typer\\models.py', reloading
+2025-12-04 21:18:10,744 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\typer\\params.py', reloading
+2025-12-04 21:18:10,747 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\tzdata\\__init__.py', reloading
+2025-12-04 21:18:10,747 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\uritemplate\\__init__.py', reloading
+2025-12-04 21:18:10,748 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\uritemplate\\api.py', reloading
+2025-12-04 21:18:10,749 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\uritemplate\\template.py', reloading
+2025-12-04 21:18:10,750 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\__init__.py', reloading
+2025-12-04 21:18:10,752 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\connectionpool.py', reloading
+2025-12-04 21:18:10,756 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\filepost.py', reloading
+2025-12-04 21:18:10,757 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\poolmanager.py', reloading
+2025-12-04 21:18:10,759 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\response.py', reloading
+2025-12-04 21:18:10,769 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\util\\request.py', reloading
+2025-12-04 21:18:10,771 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\util\\retry.py', reloading
+2025-12-04 21:18:10,772 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\util\\timeout.py', reloading
+2025-12-04 21:18:10,773 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\util\\url.py', reloading
+2025-12-04 21:18:10,775 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\uvicorn\\__init__.py', reloading
+2025-12-04 21:18:10,776 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\uvicorn\\config.py', reloading
+2025-12-04 21:18:10,780 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\uvicorn\\main.py', reloading
+2025-12-04 21:18:10,785 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\uvicorn\\server.py', reloading
+2025-12-04 21:18:10,788 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\watchfiles\\__init__.py', reloading
+2025-12-04 21:18:10,789 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\watchfiles\\filters.py', reloading
+2025-12-04 21:18:10,790 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\watchfiles\\main.py', reloading
+2025-12-04 21:18:10,792 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\watchfiles\\run.py', reloading
+2025-12-04 21:18:10,795 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\watchfiles\\version.py', reloading
+2025-12-04 21:18:10,795 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websocket\\__init__.py', reloading
+2025-12-04 21:18:10,796 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websocket\\_abnf.py', reloading
+2025-12-04 21:18:10,798 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websocket\\_core.py', reloading
+2025-12-04 21:18:10,800 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websocket\\_exceptions.py', reloading
+2025-12-04 21:18:10,800 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websocket\\_logging.py', reloading
+2025-12-04 21:18:10,801 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websocket\\_socket.py', reloading
+2025-12-04 21:18:10,803 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websocket\\_app.py', reloading
+2025-12-04 21:18:10,806 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\__init__.py', reloading
+2025-12-04 21:18:10,808 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\asyncio\\client.py', reloading
+2025-12-04 21:18:10,811 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\asyncio\\router.py', reloading
+2025-12-04 21:18:10,812 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\asyncio\\server.py', reloading
+2025-12-04 21:18:10,814 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\asyncio\\connection.py', reloading
+2025-12-04 21:18:10,818 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\client.py', reloading
+2025-12-04 21:18:10,820 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\datastructures.py', reloading
+2025-12-04 21:18:10,821 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\exceptions.py', reloading
+2025-12-04 21:18:10,823 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\frames.py', reloading
+2025-12-04 21:18:10,825 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\http11.py', reloading
+2025-12-04 21:18:10,827 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\protocol.py', reloading
+2025-12-04 21:18:10,829 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\server.py', reloading
+2025-12-04 21:18:10,830 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\websockets\\typing.py', reloading
+2025-12-04 21:18:10,831 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\__init__.py', reloading
+2025-12-04 21:18:10,832 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\serving.py', reloading
+2025-12-04 21:18:10,837 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\test.py', reloading
+2025-12-04 21:18:10,842 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\wrappers\\request.py', reloading
+2025-12-04 21:18:10,846 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\wikipedia\\__init__.py', reloading
+2025-12-04 21:18:10,846 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\wrapt\\__init__.py', reloading
+2025-12-04 21:18:10,846 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\yarl\\__init__.py', reloading
+2025-12-04 21:18:10,847 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\yarl\\_query.py', reloading
+2025-12-04 21:18:10,848 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\yarl\\_url.py', reloading
+2025-12-04 21:18:10,854 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\zipp\\__init__.py', reloading
+2025-12-04 21:18:10,859 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pythonwin\\pywin\\__init__.py', reloading
+2025-12-04 21:18:11,265 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:18:11,808 - WARNING -  * Debugger is active!
+2025-12-04 21:18:11,810 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:18:29,931 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 21:18:29,936 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 21:18:29,941 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 21:18:29,947 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 21:18:29,976 - ERROR - ERROR in CLEANER: 1525 (HY000): Incorrect DATE value: ''
+2025-12-04 21:18:39,200 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 21:18:39,200 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 21:18:39,209 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:18:39,764 - WARNING -  * Debugger is active!
+2025-12-04 21:18:39,766 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:18:41,985 - INFO - 127.0.0.1 - - [04/Dec/2025 21:18:41] "GET / HTTP/1.1" 200 -
+2025-12-04 21:18:49,220 - INFO -  * Detected change in 'C:\\Users\\Ajayn\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\genericpath.py', reloading
+2025-12-04 21:18:49,845 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:18:50,448 - WARNING -  * Debugger is active!
+2025-12-04 21:18:50,450 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:21:13,707 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 21:21:13,712 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 21:21:13,716 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 21:21:13,721 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 21:21:23,676 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 21:21:23,676 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 21:21:23,687 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:21:24,267 - WARNING -  * Debugger is active!
+2025-12-04 21:21:24,269 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:21:33,507 - INFO - 127.0.0.1 - - [04/Dec/2025 21:21:33] "GET / HTTP/1.1" 200 -
+2025-12-04 21:21:34,172 - INFO - 127.0.0.1 - - [04/Dec/2025 21:21:34] "GET / HTTP/1.1" 200 -
+2025-12-04 21:21:34,414 - INFO - 127.0.0.1 - - [04/Dec/2025 21:21:34] "GET / HTTP/1.1" 200 -
+2025-12-04 21:21:34,586 - INFO - 127.0.0.1 - - [04/Dec/2025 21:21:34] "GET / HTTP/1.1" 200 -
+2025-12-04 21:21:39,637 - INFO - 127.0.0.1 - - [04/Dec/2025 21:21:39] "POST /run_migration HTTP/1.1" 200 -
+2025-12-04 21:21:39,836 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 21:21:39,841 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 21:21:39,846 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 21:21:39,852 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 21:21:41,662 - INFO - 127.0.0.1 - - [04/Dec/2025 21:21:41] "POST /run_migration HTTP/1.1" 200 -
+2025-12-04 21:21:41,795 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 21:21:41,800 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 21:21:41,805 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 21:21:41,809 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 21:22:31,416 - INFO -  * Detected change in 'c:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\hex_to_dbf.py', reloading
+2025-12-04 21:22:31,422 - INFO -  * Detected change in 'c:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\utils\\forensics.py', reloading
+2025-12-04 21:22:31,428 - INFO -  * Detected change in 'c:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\normalizer\\normalizer.py', reloading
+2025-12-04 21:22:31,444 - INFO -  * Detected change in 'c:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\dashboard.py', reloading
+2025-12-04 21:22:32,419 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:22:32,987 - WARNING -  * Debugger is active!
+2025-12-04 21:22:32,989 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:22:44,574 - INFO - 127.0.0.1 - - [04/Dec/2025 21:22:44] "GET / HTTP/1.1" 200 -
+2025-12-04 21:26:12,070 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 21:26:12,073 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 21:26:12,074 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 21:26:12,076 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 21:26:52,126 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 21:26:52,126 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 21:26:52,127 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 21:26:52,128 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 21:26:56,138 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 21:26:56,138 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 21:26:56,150 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:26:56,710 - WARNING -  * Debugger is active!
+2025-12-04 21:26:56,714 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:26:57,190 - INFO - 127.0.0.1 - - [04/Dec/2025 21:26:57] "GET / HTTP/1.1" 200 -
+2025-12-04 21:26:59,142 - INFO - 127.0.0.1 - - [04/Dec/2025 21:26:59] "POST /run_migration HTTP/1.1" 200 -
+2025-12-04 21:26:59,355 - INFO - MIGRATION: customers - 2 rows - SUCCESS
+2025-12-04 21:26:59,357 - INFO - MIGRATION: orders - 3 rows - SUCCESS
+2025-12-04 21:26:59,357 - INFO - MIGRATION: products - 3 rows - SUCCESS
+2025-12-04 21:26:59,359 - INFO - MIGRATION: employees - 3 rows - SUCCESS
+2025-12-04 21:29:07,086 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:29:07,088 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:29:07,093 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:29:07,096 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:29:32,987 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 21:29:32,987 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 21:29:32,996 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:29:33,589 - WARNING -  * Debugger is active!
+2025-12-04 21:29:33,591 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:29:34,360 - INFO - 127.0.0.1 - - [04/Dec/2025 21:29:34] "GET / HTTP/1.1" 200 -
+2025-12-04 21:29:37,978 - INFO - 127.0.0.1 - - [04/Dec/2025 21:29:37] "GET / HTTP/1.1" 200 -
+2025-12-04 21:29:38,514 - INFO - 127.0.0.1 - - [04/Dec/2025 21:29:38] "GET / HTTP/1.1" 200 -
+2025-12-04 21:29:38,779 - INFO - 127.0.0.1 - - [04/Dec/2025 21:29:38] "GET / HTTP/1.1" 200 -
+2025-12-04 21:29:38,938 - INFO - 127.0.0.1 - - [04/Dec/2025 21:29:38] "GET / HTTP/1.1" 200 -
+2025-12-04 21:29:39,218 - INFO - 127.0.0.1 - - [04/Dec/2025 21:29:39] "GET / HTTP/1.1" 200 -
+2025-12-04 21:29:40,450 - INFO - 127.0.0.1 - - [04/Dec/2025 21:29:40] "GET / HTTP/1.1" 200 -
+2025-12-04 21:30:27,719 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:30:27,719 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:30:27,721 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:30:27,721 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:30:29,033 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:30:29,034 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:30:29,035 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:30:29,035 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:33:50,925 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:33:50,925 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:33:50,927 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:33:50,927 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:33:51,000 - ERROR - ERROR in MAIN_CRASH: 'latin-1' codec can't encode character '\u2705' in position 1749: ordinal not in range(256)
+2025-12-04 21:35:04,743 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:04,743 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:04,744 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:04,744 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:36,715 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-04 21:35:36,715 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-04 21:35:36,725 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:35:37,302 - WARNING -  * Debugger is active!
+2025-12-04 21:35:37,304 - INFO -  * Debugger PIN: 119-890-527
+2025-12-04 21:35:49,579 - INFO - 127.0.0.1 - - [04/Dec/2025 21:35:49] "GET / HTTP/1.1" 200 -
+2025-12-04 21:35:53,276 - INFO - 127.0.0.1 - - [04/Dec/2025 21:35:53] "POST /run_migration HTTP/1.1" 200 -
+2025-12-04 21:35:53,374 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:53,376 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:53,376 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:53,376 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:57,643 - INFO - 127.0.0.1 - - [04/Dec/2025 21:35:57] "POST /run_migration HTTP/1.1" 200 -
+2025-12-04 21:35:57,682 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:57,683 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:57,684 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:35:57,684 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:36:56,099 - INFO - 127.0.0.1 - - [04/Dec/2025 21:36:56] "POST /run_migration HTTP/1.1" 200 -
+2025-12-04 21:36:56,146 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:36:56,147 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:36:56,147 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:36:56,148 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:40:00,947 - INFO -  * Detected change in 'c:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\dashboard.py', reloading
+2025-12-04 21:40:00,948 - INFO -  * Detected change in 'c:\\Users\\Ajayn\\OneDrive\\Desktop\\DBMS\\DB-MigrateX\\dashboard.py', reloading
+2025-12-04 21:40:01,817 - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-04 21:47:58,215 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:47:58,217 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:47:58,218 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:47:58,219 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:51:01,191 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:51:01,192 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:51:01,193 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:51:01,193 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:54:44,574 - INFO - MIGRATION: employees - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:54:44,574 - INFO - MIGRATION: customers - 2 rows - INCREMENTAL_SYNC
+2025-12-04 21:54:44,576 - INFO - MIGRATION: products - 3 rows - INCREMENTAL_SYNC
+2025-12-04 21:54:44,576 - INFO - MIGRATION: orders - 3 rows - INCREMENTAL_SYNC
